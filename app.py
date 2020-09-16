@@ -98,6 +98,12 @@ def main():
         df["keyword_match"] = df.apply(lambda paper: filter_by_keywords(paper, select_keywords), axis=1)
         keyword_papers = df[df["keyword_match"] == True]
 
+        c = plot_scatter(df, query=select_keywords, highlight=keyword_papers, color="Similarity",
+                         brush_option=False)
+        st.markdown("## UMAP Representation")
+        # use alt.layer(c) to set height manually -- bug https://discuss.streamlit.io/t/alt-chart-height-is-being-removed/581/5
+        st.altair_chart(alt.layer(c), width=0)
+
         st.markdown('## Queried papers')
         st.table(keyword_papers[["Title","Authors","Conference","Year"]].head(n=select_num))
 
