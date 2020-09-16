@@ -2,4 +2,4 @@ altair==4.0.0
 numpy==1.17.4
 pandas==0.25.3
 pickleshare==0.7.5
-streamlit==0.52.2
+streamlit>=0.66
